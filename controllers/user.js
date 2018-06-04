@@ -38,7 +38,7 @@ const signIn = (req, res) => {
       if (!isMatch) return res.status(404).send({ msg: `Error de contraseña: ${req.body.email}` })
 
       req.user = user
-      return res.status(200).send({ msg: 'Te has logueado correctamente', token: service.createToken(user) })
+      return res.status(200).send({ msg: 'Te has logueado correctamente', token: service.createToken(user) , id: user._id})
     });
 
   }).select('_id email +password');
