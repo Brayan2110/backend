@@ -26,7 +26,7 @@ function saveNews (req, res) {
   console.log('POST /api/news')
   console.log(req.body)
 
-  let news = new News)
+  let news = new News()
   news.imagen = req.body.imagen
   news.texto = req.body.texto
 
