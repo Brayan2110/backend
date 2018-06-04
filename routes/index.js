@@ -2,12 +2,18 @@
 
 const express = require('express')
 const publicationCtrl = require('../controllers/publication')
+const newsCtrl = require('../controllers/news')
 const userCtrl = require('../controllers/user')
 const messageCtrl = require('../controllers/message')
 const auth = require('../middlewares/auth')
 const api = express.Router()
 
 api.get('/user', userCtrl.usuarios)
+api.get('/news', auth, newsCtrl.getNewss)
+api.get('/news/:newsId', newsCtrl.getNews)
+api.post('/news', auth, newsCtrl.saveNews)
+api.put('/news/:newsId', auth, newsCtrl.updateNews)
+api.delete('/news/:newsId', auth, newsCtrl.deleteNews)
 api.get('/publication', auth, publicationCtrl.getPublications)
 api.get('/publication/:publicationId', publicationCtrl.getPublication)
 api.post('/publication', auth, publicationCtrl.savePublication)
