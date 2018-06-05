@@ -27,6 +27,7 @@ function savePublication (req, res) {
   console.log(req.body)
 
   let publication = new Publication()
+  publication.user = req.body.user
   publication.imagen = req.body.imagen
   publication.texto = req.body.texto
 
