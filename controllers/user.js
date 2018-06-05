@@ -62,10 +62,55 @@ const updateFoto = (req, res) => {
   })
 }
 
+const updateNombre = (req, res) => {
+  User.update({ _id: req.body.id },{ nombre: req.body.nombre}, (err, userUpdated) => {
+    if (err) res.status(500).send({message: `Error al actualizar el nombre: ${err}`})
+
+    res.status(200).send({ user: userUpdated })
+  })
+}
+
+const updateApellidos = (req, res) => {
+  User.update({ _id: req.body.id },{ apellidos: req.body.apellidos}, (err, userUpdated) => {
+    if (err) res.status(500).send({message: `Error al actualizar los apellidos: ${err}`})
+
+    res.status(200).send({ user: userUpdated })
+  })
+}
+
+const updateTelefono = (req, res) => {
+  User.update({ _id: req.body.id },{ telefono: req.body.telefono}, (err, userUpdated) => {
+    if (err) res.status(500).send({message: `Error al actualizar el telefono: ${err}`})
+
+    res.status(200).send({ user: userUpdated })
+  })
+}
+
+const updateEdad = (req, res) => {
+  User.update({ _id: req.body.id },{ edad: req.body.edad}, (err, userUpdated) => {
+    if (err) res.status(500).send({message: `Error al actualizar la edad: ${err}`})
+
+    res.status(200).send({ user: userUpdated })
+  })
+}
+
+const updateUbicacion = (req, res) => {
+  User.update({ _id: req.body.id },{ ubicacion: req.body.ubicacion}, (err, userUpdated) => {
+    if (err) res.status(500).send({message: `Error al actualizar la ubicacion: ${err}`})
+
+    res.status(200).send({ user: userUpdated })
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   usuarios,
   updateFoto,
+  updateNombre,
+  updateApellidos,
+  updateTelefono,
+  updateEdad,
+  updateUbicacion,
   usuario
 }

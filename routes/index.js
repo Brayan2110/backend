@@ -10,7 +10,12 @@ const api = express.Router()
 
 api.get('/user', userCtrl.usuarios)
 api.get('/usuario', userCtrl.usuario)
-api.post('/usuario', userCtrl.updateFoto)
+api.post('/usuario/foto', userCtrl.updateFoto)
+api.post('/usuario/nombre', userCtrl.updateNombre)
+api.post('/usuario/apellido', userCtrl.updateApellidos)
+api.post('/usuario/edad', userCtrl.updateEdad)
+api.post('/usuario/ubicacion', userCtrl.updateUbicacion)
+api.post('/usuario/telefono', userCtrl.updateTelefono)
 
 api.get('/newss', auth, newsCtrl.getNewss)
 api.get('/news/:newsId', newsCtrl.getNews)
