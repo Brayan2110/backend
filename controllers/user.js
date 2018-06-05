@@ -54,7 +54,7 @@ const signIn = (req, res) => {
   }).select('_id email +password');
 }
 
-function updateUser (req, res) {
+const updateUser = (req, res) => {
   let usertId = req.params.userId
   let update = req.body
 
