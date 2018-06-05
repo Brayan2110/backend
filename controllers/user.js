@@ -28,6 +28,15 @@ const usuarios = (req, res) =>{
   })
 }
 
+const usuario = (req, res) =>{
+  User.findOne({_id: req.headers._id}, (err, user) => {
+    if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
+    if (!user) return res.status(404).send({message: 'No se encontro el usuarios'})
+
+    res.send(200, { user })
+  })
+}
+
 const signIn = (req, res) => {
   User.findOne({ email: req.body.email }, (err, user) => {
     if (err) return res.status(500).send({ msg: `Error al ingresar: ${err}` })
@@ -47,5 +56,6 @@ const signIn = (req, res) => {
 module.exports = {
   signUp,
   signIn,
-  usuarios
+  usuarios,
+  usuario
 }
