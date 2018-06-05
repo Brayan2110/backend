@@ -5,6 +5,7 @@ const service = require('../services')
 
 const signUp = (req, res) => {
   const user = new User({
+    nombre: req.body.nombre,
     email: req.body.email,
     apellidos: req.body.apellidos,
     telefono: req.body.telefono,
