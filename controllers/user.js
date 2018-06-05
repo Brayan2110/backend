@@ -54,12 +54,9 @@ const signIn = (req, res) => {
   }).select('_id email +password');
 }
 
-const updateUser = (req, res) => {
-  let usertId = req.params.userId
-  let update = req.body
-
-  User.findByIdAndUpdate(userId, update, (err, userUpdated) => {
-    if (err) res.status(500).send({message: `Error al actualizar el usuario: ${err}`})
+const updateFoto = (req, res) => {
+  User.update({ _id: req.body.id },{ foto: req.body.foto}, (err, userUpdated) => {
+    if (err) res.status(500).send({message: `Error al actualizar la foto: ${err}`})
 
     res.status(200).send({ user: userUpdated })
   })
@@ -69,6 +66,6 @@ module.exports = {
   signUp,
   signIn,
   usuarios,
-  updateUser,
+  updateFoto,
   usuario
 }

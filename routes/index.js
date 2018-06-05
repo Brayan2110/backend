@@ -10,7 +10,7 @@ const api = express.Router()
 
 api.get('/user', userCtrl.usuarios)
 api.get('/usuario', userCtrl.usuario)
-api.post('/usuario', userCtrl.updateUser)
+api.post('/usuario', userCtrl.updateFoto)
 
 api.get('/newss', auth, newsCtrl.getNewss)
 api.get('/news/:newsId', newsCtrl.getNews)
