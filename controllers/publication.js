@@ -52,7 +52,7 @@ function updatePublication (req, res) {
 function deletePublication (req, res) {
   let publicationId = req.params.publicationId
 
-  Publication.findById(publicationId, (err, publication) => {
+  Publication.find(publicationId, (err, publication) => {
     if (err) res.status(500).send({message: `Error al borrar la publicacion: ${err}`})
 
     publication.remove(err => {
@@ -62,12 +62,12 @@ function deletePublication (req, res) {
   })
 }
 
-function publicacionesdeunusuario (req,res){
-  Publication.find({usuario: req.body.id}, (err, publications) => {
+function userPublications (req,res){
+  Publication.find({ usuario:req.params.userId }, (err, publications) => {
     if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
-    if (!publications) return res.status(404).send({message: 'No existen publicaciones'})
+    if (!publicationa) return res.status(404).send({message: `No tiene publicaciones`})
 
-    res.send(200, { publications })
+    res.status(200).send({ publications })
   })
 }
 
@@ -76,5 +76,6 @@ module.exports = {
   getPublications,
   savePublication,
   updatePublication,
-  deletePublication
+  deletePublication,
+  userPublications
 }
