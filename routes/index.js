@@ -23,7 +23,7 @@ api.post('/news', auth, newsCtrl.saveNews)
 api.put('/news/:newsId', auth, newsCtrl.updateNews)
 api.delete('/news/:newsId', auth, newsCtrl.deleteNews)
 
-api.get('/publication/usuario/userId', auth, publicationCtrl.userPublications)
+api.get('/publication/usuario/:userId', auth, publicationCtrl.userPublications)
 api.get('/publication', auth, publicationCtrl.getPublications)
 api.get('/publication', auth, publicationCtrl.getPublications)
 api.get('/publication/:publicationId', publicationCtrl.getPublication)
