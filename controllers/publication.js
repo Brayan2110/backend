@@ -65,7 +65,7 @@ function deletePublication (req, res) {
 function userPublications (req,res){
   Publication.find({ usuario: req.params.userId }, (err, publications) => {
     if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
-    if (!publicationa) return res.status(404).send({message: `No tiene publicaciones`})
+    if (!publications) return res.status(404).send({message: `No tiene publicaciones`})
 
     res.status(200).send({ publications })
   })
