@@ -31,6 +31,7 @@ api.post('/publication', auth, publicationCtrl.savePublication)
 api.put('/publication/:publicationId', auth, publicationCtrl.updatePublication)
 api.delete('/publication/:publicationId', auth, publicationCtrl.deletePublication)
 
+api.get('/message/:userId', auth, messageCtrl.conversacion)
 api.get('/message', auth, messageCtrl.getMessages)
 api.post('/message', auth, messageCtrl.saveMessage)
 api.delete('/message/:messageId', auth, messageCtrl.deleteMessage)

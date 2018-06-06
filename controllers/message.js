@@ -40,8 +40,18 @@ function deleteMessage (req, res) {
   })
 }
 
+function conversacion(req, res){
+	Message.find({ $or: [{emisor: req.params.userId}, {receptor: req.params.userId}] }, (err, messages) => {
+    if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
+    if (!messages) return res.status(404).send({message: `No Existen mensajes`})
+
+    res.status(200).send({ messages })
+  })
+}
+
 module.exports = {
   getMessages,
   saveMessage,
-  deleteMessage
+  deleteMessage,
+  conversacion
 }
