@@ -62,6 +62,15 @@ function deletePublication (req, res) {
   })
 }
 
+function publicacionesdeunusuario (req,res){
+  Publication.find({usuario: req.body.id}, (err, publications) => {
+    if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
+    if (!publications) return res.status(404).send({message: 'No existen publicaciones'})
+
+    res.send(200, { publications })
+  })
+}
+
 module.exports = {
   getPublication,
   getPublications,
