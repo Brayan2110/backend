@@ -10,9 +10,6 @@ const UserSchema = new Schema({
   nombre: String,
   foto: String,
   apellidos: String,
-  telefono: Number,
-  edad: Number,
-  ubicacion: { type: String, enum: ['San Jose', 'Cartago', 'Heredia', 'Alajuela', 'Guanacaste', 'Punterenas', 'Limon'] },
   password: { type: String, select: false },
   signupDate: { type: Date, default: Date.now() },
   lastLogin: Date
