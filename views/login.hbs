@@ -8,13 +8,13 @@
 
 <script type="text/javascript">
   const formLogin = document.querySelector('#login')
-  const formData = new FormData(formLogin)
+  const data = new URLSearchParams(new FormData(formLogin));
 
   formLogin.addEventListener('submit', event => {
     event.preventDefault()
     fetch('/api/signin', {
       method: 'POST',
-      body: formData
+      body: data
     })
     .then(res => res.json())
     .then(data => {
