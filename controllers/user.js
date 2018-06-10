@@ -52,7 +52,7 @@ const signIn = (req, res) => {
 }
 
 const updateFoto = (req, res) => {
-  User.update({ _id: req.body.id },{ foto: req.body.foto}, (err, userUpdated) => {
+  User.update({ _id: req.body.id },{ foto: req.body.foto }, (err, userUpdated) => {
     if (err) res.status(500).send({message: `Error al actualizar la foto: ${err}`})
 
     res.status(200).send({ user: userUpdated })
