@@ -1,24 +1,22 @@
-<form id="login" method="post">
-  <input type="email" name="email" value="" placeholder="Tu Email">
-  <br><br>
-  <input type="password" name="password" value="" placeholder="Tu Contraseña">
-  <br><br>
-  <input type="submit" value="Login">
-</form>
-
 <script type="text/javascript">
-  const formLogin = document.querySelector('#login')
-  const data = new URLSearchParams(new FormData(formLogin));
 
-  formLogin.addEventListener('submit', event => {
-    event.preventDefault()
-    fetch('/api/signin', {
+  const formLogin = document.querySelector('#login');
+
+  formLogin.addEventListener('submit', event =>{
+    event.preventDefault();
+    var emailStr = document.getElementById('email').value;
+    var passwordStr = document.getElementById('password').value;
+    const params = new URLSearchParams();
+    params.set('email',emailStr);
+    params.set('password',passwordStr);
+
+    fetch('/api/loginUser',{
       method: 'POST',
-      body: data
+      body: params,
+      headers: {'Content-Type':'application/x-www-form-urlencoded'}
     })
-    .then(res => res.json())
-    .then(data => {
-      localStorage.setItem('token', data.token)
-    })
-  })
-</script>
+    .then(response => response.json())
+    .then(data => console.log('Token generado: '+data.token))
+    .catch(res =>{ alert('Ocurrio un error: '+res.message)});
+  });
+</script>﻿
